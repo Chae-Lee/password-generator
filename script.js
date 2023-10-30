@@ -133,7 +133,10 @@ getPasswordOptions ()
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  var special = confirm ("Click OK to confirm including special characters");
+  var number = confirm ("Click OK to confirm including numeric characters");
+  var lowercase = confirm ("Click OK to confirm including lowercase characters");
+  var uppercase = confirm ("Click OK to confirm including uppercase characters");
 }
 
 // Function to generate password with user input
@@ -154,3 +157,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
