@@ -120,11 +120,10 @@ var randomSpecial;
 var randomNumber; 
 var randomLowercase;
 var randomUppercase;
-var characterArray;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-var numberOfCharacters = parseInt (prompt ("How many characters would you like your password to contain?"));
+numberOfCharacters = parseInt (prompt ("How many characters would you like your password to contain?"));
 if (numberOfCharacters < 8) {
   alert ("Password length must be at least 8 characters");
   return;
@@ -141,9 +140,10 @@ if (isNaN(numberOfCharacters)){
 return numberOfCharacters
 }
 
+
 // Function for getting a random element from an array - only to be declared if user selects a number between the parameters set
 function getRandom() {
-  // var passwordLength = generatePassword();
+  var passwordLength = numberOfCharacters;
   var characterArray = [];
 // Selection of special characters - if true specialCharacters array will be added to the list of characterArray array
   var characters = confirm ("Click OK to include special characters in your password");
@@ -161,7 +161,7 @@ if (lowercase) {
   characterArray = characterArray.concat (lowerCasedCharacters);
 }
 // Selection of uppercase characters - if true upperCasedCharacters array will be added to characterArray array
-var uppercase = confirm ("Click OK to include uppwercase in your password");
+var uppercase = confirm ("Click OK to include uppercase in your password");
 if (uppercase) {
   characterArray = characterArray.concat (upperCasedCharacters);
 }
@@ -171,11 +171,20 @@ if (characterArray.length===0){
 }
 
 console.log (characterArray);
+
+var finalPassword ="";
+for (var i=0; i< passwordLength; i++){
+  var index = Math.floor(Math.random()*characterArray.length);
+  var digit = characterArray [index];
+  finalPassword += digit
+}
+return finalPassword;
+
 }
 
-if (numberOfCharacters){
-  getRandom();
-}
+// if (numberOfCharacters){
+//   getRandom();
+// }
 
 //Function to generate password with user input
 // function generatePassword() {
@@ -196,13 +205,10 @@ function writePassword() {
   if (!passwordLength) {
     alert ("Thank you for visiting the random password generator");
   } else {
-    getRandom();
+    var finalPassword = getRandom();
+    var passwordText = document.querySelector('#password');
+    passwordText.value = finalPassword;
   }
-
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
-  passwordText.value = password;
-
 }
 
 // Add event listener to generate button
