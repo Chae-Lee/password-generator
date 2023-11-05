@@ -33,7 +33,7 @@ The parameters (length of password & types of characters)can be changed and upda
 ## The final deployed application should look like this
 
 <b> URL to the deployed Application </b>
-
+https://chae-lee.github.io/password-generator/ 
 
 
 ![Password generator main page](./assets/images/password-generator-main-page.png)
