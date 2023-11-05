@@ -116,33 +116,72 @@ var upperCasedCharacters = [
 ];
 
 var numberOfCharacters;
+var randomSpecial;
+var randomNumber; 
+var randomLowercase;
+var randomUppercase;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-var numberOfCharacters = prompt ("How many characters would you like your password to contain?");
+var numberOfCharacters = parseInt (prompt ("How many characters would you like your password to contain?"));
 if (numberOfCharacters < 8) {
   alert ("Password length must be at least 8 characters");
-} else if (numberOfCharacters > 128){
+  return;
+} 
+if (numberOfCharacters > 128){
   alert ("Password length must be less than 128 characters");
-} else {
-  getRandom ();
+  return;
 }
+if (isNaN(numberOfCharacters)){
+  alert ("Please enter a valid number");
+  return;
+}
+// console.log (numberOfCharacters);
+return numberOfCharacters
+}
+// getPasswordOptions () // - declaring function to check that the password prompts are working
+// getPasswordOptions (getRandom()); // NEED TO REVIEW THIS
+getRandom (getPasswordOptions);
+
+// Function for getting a random element from an array - only to be declared if user selects a number between the parameters set
+function getRandom() {
+  var passwordLength = getPasswordOptions();
+  var characterArray = [];
+// Selection of special characters - if true specialCharacters array will be added to the list of characterArray array
+  var characters = confirm ("Click OK to include special characters in your password");
+  if (characters){
+    characterArray = characterArray.concat (specialCharacters);
+  }
+// Selection of numbers- if true numericCharacters array will be added to the list of characterArray array 
+  var number = confirm ("Click OK to include numbers in your password");
+  if (number) {
+    characterArray = characterArray.concat (numericCharacters);
+  }
+// Selection of lowercase characters - if true lowerCasedCharacters array will be added to characterArray array
+var lowercase = confirm ("Click OK to include lowercase in your password");
+if (lowercase) {
+  characterArray = characterArray.concat (lowerCasedCharacters);
+}
+// Selection of uppercase characters - if true upperCasedCharacters array will be added to characterArray array
+var uppercase = confirm ("Click OK to include uppwercase in your password");
+if (uppercase) {
+  characterArray = characterArray.concat (upperCasedCharacters);
 }
 
-getPasswordOptions ()
+console.log (characterArray);
 
-// Function for getting a random element from an array
-function getRandom(arr) {
-  var special = confirm ("Click OK to confirm including special characters");
-  var number = confirm ("Click OK to confirm including numeric characters");
-  var lowercase = confirm ("Click OK to confirm including lowercase characters");
-  var uppercase = confirm ("Click OK to confirm including uppercase characters");
 }
 
-// Function to generate password with user input
+
+
+//Function to generate password with user input
 function generatePassword() {
+  if (special) {
+    random = randomSpecial[Math.floor(Math.random()*specialCharacters.length)];
+  }
 
 }
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -151,6 +190,7 @@ var generateBtn = document.querySelector('#generate');
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
+  getPasswordOptions();
 
   passwordText.value = password;
 }
