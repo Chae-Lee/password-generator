@@ -116,10 +116,6 @@ var upperCasedCharacters = [
 ];
 
 var numberOfCharacters;
-var randomSpecial;
-var randomNumber; 
-var randomLowercase;
-var randomUppercase;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
@@ -168,10 +164,10 @@ if (uppercase) {
 
 if (characterArray.length===0){
   alert ("You must choose at least one character type");
-}
+} 
 
 console.log (characterArray);
-
+//Function to generate password with user input
 var finalPassword ="";
 for (var i=0; i< passwordLength; i++){
   var index = Math.floor(Math.random()*characterArray.length);
@@ -181,19 +177,6 @@ for (var i=0; i< passwordLength; i++){
 return finalPassword;
 
 }
-
-// if (numberOfCharacters){
-//   getRandom();
-// }
-
-//Function to generate password with user input
-// function generatePassword() {
-//   if (special) {
-//     random = randomSpecial[Math.floor(Math.random()*specialCharacters.length)];
-//   }
-
-// }
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -205,9 +188,9 @@ function writePassword() {
   if (!passwordLength) {
     alert ("Thank you for visiting the random password generator");
   } else {
-    var finalPassword = getRandom();
+    var finalDisplayedPW = getRandom();
     var passwordText = document.querySelector('#password');
-    passwordText.value = finalPassword;
+    passwordText.value = finalDisplayedPW;
   }
 }
 
